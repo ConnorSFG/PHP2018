@@ -8,7 +8,7 @@
 <body>
 	
 	<?php
-echo "Connor N";
+echo "Connor Nichols";
 ?>
 	
 </body>
