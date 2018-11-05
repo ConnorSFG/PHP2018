@@ -5,11 +5,11 @@
 	$inName = "";
 	$inSS = "";
 	$RadioGroup1 = "";
+	$spaceErr = "";
 	$valid_form = false;
 	
 if(isset($_POST["submitForm"]))
 {
-	echo "<h1>You have submitted the form. Preparing to put into database.</h1>";
 	
 $inName = $_POST["inName"];
 $inSS = $_POST["inSS"];
@@ -24,18 +24,29 @@ $valid_form = true;
 
 include "formvalidationFunctions.php";
 
-if( validateName($inName) ) {
+$noSpace = preg_match("/^[a-zA-Z]*$/", $inName);
+
+if ($noSpace) {
 	
+}
+
+else
+{
+	$valid_form = false;
+	$spaceErr = "Please don't use spaces and make it blank";
+}
+
+if( validateName($inName) ) {
 	
 }
 else
 {
 	$valid_form = false;
 	$name_Err = " Please enter your name.";
-}
+} 
+ 
 
 if( validateSS($inSS) ) {
-	
 	
 }
 else
@@ -47,6 +58,7 @@ else
 
 if(validateRadio($RadioGroup1) ) {
 	
+
 	
 }
 else
@@ -138,12 +150,12 @@ echo "<p>$RadioGroup1</p>";
   <table width="587" border="0">
     <tr>
       <td width="117">Name:</td>
-      <td width="300"><input type="text" name="inName" id="inName" size="15" value="<?php echo $inName; ?>"/><span id="error"><?php echo $name_Err; ?></span></td>
+      <td width="300"><input type="text" name="inName" id="inName" size="15" value="<?php echo $inName; ?>"/><span id="error"><?php echo $name_Err; ?> <?php echo $spaceErr;?></span></td>
       <td width="210" class="error"></td>
     </tr>
     <tr>
       <td>Social Security</td>
-      <td><input type="text" name="inSS" id="inSS" size="9" value="<?php echo substr ($inSS, 0, 9); ?>" /><span id="error"><?php echo $ss_Err; ?></span></td>
+      <td><input type="text" name="inSS" id="inSS" size="9" value="<?php echo substr ($inSS, 0, 9); ?>"/> <span id="error"><?php echo $ss_Err; ?></span></td>
       <td class="error"></td>
     </tr>
     <tr>
