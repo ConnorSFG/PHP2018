@@ -1,6 +1,15 @@
 <?php
 	
-	include 'PDOConnection.php';			//connects to the database
+	session_start();
+	
+	if( !isset($_SESSION ['validUser'])) {
+		header('http://eternalmemoriessfg.com/WDV341/homework.php');
+	
+	}
+	else
+	{
+	
+	include 'PDOconnection.php';			//connects to the database
 
 	$stmt = $conn->prepare("SELECT event_id,event_name,event_description FROM wdv341_event");
 	$stmt->execute();
@@ -22,6 +31,6 @@
 			echo "<td><a href='updateEvent.php?eventID=" . $row['event_id'] . "'>Update</a></td>"; 
 			echo "<td><a href='deleteEvent.php?eventID=" . $row['event_id'] . "'>Delete</a></td>"; 		
 		echo "</tr>";
-	}
+	}}
 ?>
 </table>
