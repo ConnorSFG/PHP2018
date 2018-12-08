@@ -1,6 +1,6 @@
 <?php
 	
-	include 'PDOConnection.php';			//connects to the database
+	include 'PDOconnection.php';			//connects to the database
 
 	$stmt = $conn->prepare("SELECT event_id,event_name,event_description FROM wdv341_event");
 	$stmt->execute();
@@ -30,7 +30,7 @@
 			echo "<td>" . $row['event_id'] . "</td>";
 			echo "<td>" . $row['event_name'] . "</td>";	
 			echo "<td>" . $row['event_description'] . "</td>";
-			echo "<td><a href='updateEvent.php?eventID=" . $row['event_id'] . "'>Update</a></td>"; 
+			echo "<td><a href='UpdateEventsForm.php?event_id=" . $row['event_id'] . "'>Update</a></td>"; 
 			echo "<td><a href='deleteEvent.php?eventID=" . $row['event_id'] . "'>Delete</a></td>"; 		
 		echo "</tr>";
 	}

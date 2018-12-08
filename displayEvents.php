@@ -28,7 +28,7 @@
 			echo "<td>" . $row['event_id'] . "</td>";
 			echo "<td>" . $row['event_name'] . "</td>";	
 			echo "<td>" . $row['event_description'] . "</td>";
-			echo "<td><a href='updateEvent.php?eventID=" . $row['event_id'] . "'>Update</a></td>"; 
+			echo "<td><a href='UpdateEventsForm.php?event_id=" . $row['event_id'] . "'>Update</a></td>"; 
 			echo "<td><a href='deleteEvent.php?eventID=" . $row['event_id'] . "'>Delete</a></td>"; 		
 		echo "</tr>";
 	}}
